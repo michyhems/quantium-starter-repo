@@ -21,7 +21,13 @@ colours={
 #To illustrate the point more clearly one could fileter the list so that the figure only showed a few months preceeding 
 # the price change.
 
-app.layout = html.Div(style={'backgroundColor': colours['background']},children=[
+app.layout = html.Div(style={'backgroundColor': colours['background'],'width':'100%'},children=[
+    html.H1(id="header",children='Sales of Pink Morsels over time',
+            style={'color':colours['accent-2'],
+                   'fontFamily':'Arial',
+                   'marginLeft':'5%',
+                   'paddingTop':'2%',
+                   'marginBottom': '0'}),
     dcc.Graph(
         id='example-graph',
     ),
@@ -32,7 +38,8 @@ app.layout = html.Div(style={'backgroundColor': colours['background']},children=
                         'font-family' : 'Arial',
                         'max-width':'fit-content',
                         'margin-left':'auto',
-                        'margin-right':'auto'
+                        'margin-right':'auto',
+                        'paddingBottom':'15%'
                           })
     
 
@@ -60,13 +67,14 @@ def update_graph(selected_region):
                   'Sales' : 'Sales ($)'
               })
     fig.update_layout(
-        title=dict(text=f'Sales of Pink Morsels over time in {selected_region} region/s', font=dict(size=50), automargin=True,yref='paper'),
+        title=dict(text=f'The graph below displays the sales figures of the snack `Pink Morsel` over time across {selected_region} region(s)', font=dict(size=20), 
+                   automargin=True,yref='paper'),
         plot_bgcolor=colours['background'],
         paper_bgcolor=colours['background'],
         font_color=colours['text'],
         font_family='Arial',
         title_font_family="Arial",
-        title_font_color=colours['accent-2']
+        title_font_color=colours['text'],
     )
     fig.data[0].line.color = colours['radio']
     return fig
