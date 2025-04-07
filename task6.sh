@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "./venv/Scripts/activate"
+./venv/Scripts/activate
 
 pytest task5.py
 pytest_exit_status=$?
